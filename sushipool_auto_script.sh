@@ -1,5 +1,6 @@
 #/bin/bash
 #__BEGIN_MAIN__
+sudo mkdir teste
 sudo apt-get install -y gcc g++ make nodejs dialog screen curl git
 curl -sL https://deb.nodesource.com/setup_9.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
