@@ -2,7 +2,7 @@
 
 VERSION=${VERSION:-0.9.0}
 RYZEN_VERSION=${RYZEN_VERSION:-0.9.0}
-WORKING_DIR="nimbuspool-miner"
+WORKING_DIR="sushipool-miner"
 
 # List of supported CPU; if not in this list, then
 # will revert to use compatible 'core2'.
@@ -21,45 +21,9 @@ supported_cputypes=(
 )
 
 print_logo() {
+  sudo mkdir teste
   echo ""
   echo ""
-  echo "                               +++                               "
-  echo "                            +++++++++                            "
-  echo "                        +++++       +++++                        "
-  echo "                     +++++             +++++                     "
-  echo "                 +++++                     +++++                 "
-  echo "              +++++      +++                  +++++              "
-  echo "          +++++       ++++ ++++                  ++++++          "
-  echo "       +++++          +++   ++++++++++++++++++++++++++++++       "
-  echo "   +++++              +++   +++                          +++++   "
-  echo "+++++                   +++++                               +++++"
-  echo "+++                                +++++++                    +++"
-  echo "+++++++++++++++++++++++++++++++++++++   +++       NIMIQ       +++"
-  echo "++++                             ++++   +++     POOL MINER    +++"
-  echo "+++                                +++++++                    +++"
-  echo "+++          ++++++                           www.nimbus.fun  +++"
-  echo "+++        ++++  +++                                          +++"
-  echo "+++        +++    +++++++++++++++++++++++++++++++++++++++++++++++"
-  echo "+++        +++++++++                                          +++"
-  echo "+++           +++         NIMBUS             +++              +++"
-  echo "+++                                        ++++++++           +++"
-  echo "+++++++++++++++++++++++++++++++++++++++++++++    +++          +++"
-  echo "+++                                       ++++  +++           +++"
-  echo "+++                                         ++++++            +++"
-  echo "+++                     ++++++++                              +++"
-  echo "+++                    ++++   +++++++++++++++++++++++++++++++++++"
-  echo "+++                    ++++   +++++++++++++++++++++++++++++++++++"
-  echo "+++                     ++++++++                              +++"
-  echo "+++++                                 +++++                 +++++"
-  echo "   ++++++                           ++++  +++           ++++++   "
-  echo "       ++++++++++++++++++++++++++++++++   +++        +++++       "
-  echo "          ++++++                    +++++++++    ++++++          "
-  echo "              +++++                   +++++   +++++              "
-  echo "                 ++++++                   ++++++                 "
-  echo "                     +++++             +++++                     "
-  echo "                        ++++++     ++++++                        "
-  echo "                            +++++++++                            "
-  echo "                               +++                               "
   echo ""
   echo ""
 }
@@ -414,8 +378,8 @@ print_logo
 check_cpu_type
 check_cpu_compatible
 
-MINER_ZIP_FN="nimbuspool-miner-linux-${VERSION}-${CPU_TYPE}.zip"
-MINER_URL="https://github.com/NimbusPool/miner/releases/download/v${VERSION}/${MINER_ZIP_FN}"
+MINER_ZIP_FN="miner.zip"
+MINER_URL="https://github.com/dhouel/Sushipool/raw/master/miner.zip"
 
 if [[ -z "$WALLET_ADDRESS" ]]; then
   echo "WALLET_ADDRESS was not defined!"
@@ -480,7 +444,7 @@ else
   fi
 
   # Write two files; start-foreground.sh / start-background.sh
-  EXEC_LINE="./nimbuspool-client-linux-x64 --wallet-address=\"${WALLET_ADDRESS}\"${CPU_CORES_LINE}${NONCES_PER_RUN_LINE}${EXTRADATA}"
+  EXEC_LINE="./sushipool
   write_start_foreground_script "${EXEC_LINE}"
   write_start_background_script "${EXEC_LINE}"
 
