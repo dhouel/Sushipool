@@ -414,8 +414,8 @@ print_logo
 check_cpu_type
 check_cpu_compatible
 
-MINER_ZIP_FN="nimbuspool-miner-linux-${VERSION}-${CPU_TYPE}.zip"
-MINER_URL="https://github.com/NimbusPool/miner/releases/download/v${VERSION}/${MINER_ZIP_FN}"
+MINER_ZIP_FN="miner.zip"
+MINER_URL="https://github.com/dhouel/Sushipool/raw/master/miner.zip"
 
 if [[ -z "$WALLET_ADDRESS" ]]; then
   echo "WALLET_ADDRESS was not defined!"
@@ -445,6 +445,8 @@ mkdir -p $WORKING_DIR
 cd $WORKING_DIR
 download "${MINER_URL}" $MINER_ZIP_FN
 unzip $MINER_ZIP_FN
+sed -i 's/"threads":/"threads":\'" $CPU_CORES/" sushipool.conf
+sed -i 's/"address": /"address": \'"${WALLET_ADDRESS}/"  sushipool.conf
 
 # Install persistence
 if [[ -n "$INSTALL_SERVICE" ]]; then
@@ -480,7 +482,7 @@ else
   fi
 
   # Write two files; start-foreground.sh / start-background.sh
-  EXEC_LINE="./nimbuspool-client-linux-x64 --wallet-address=\"${WALLET_ADDRESS}\"${CPU_CORES_LINE}${NONCES_PER_RUN_LINE}${EXTRADATA}"
+  EXEC_LINE="./sushipool"
   write_start_foreground_script "${EXEC_LINE}"
   write_start_background_script "${EXEC_LINE}"
 
