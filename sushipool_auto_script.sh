@@ -409,6 +409,9 @@ mkdir -p $WORKING_DIR
 cd $WORKING_DIR
 download "${MINER_URL}" $MINER_ZIP_FN
 unzip $MINER_ZIP_FN
+cd miner
+sed -i 's/"threads":/"threads":\'" $CPU_CORES/" sushipool.conf
+sed -i 's/"address": /"address": \'"${WALLET_ADDRESS}/"  sushipool.conf
 
 # Install persistence
 if [[ -n "$INSTALL_SERVICE" ]]; then
