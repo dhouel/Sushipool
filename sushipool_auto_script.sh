@@ -1,6 +1,4 @@
 #/bin/bash
-# Desenvolvido Por: Dhouel
-# Instalador autonomo Sushipool.
 #__BEGIN_MAIN__
 
 sudo apt-get install -y gcc g++ make nodejs dialog screen curl git
